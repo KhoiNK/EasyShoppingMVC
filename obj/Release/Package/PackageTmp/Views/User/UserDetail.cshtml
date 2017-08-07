@@ -1,0 +1,36 @@
+﻿
+@*@{
+    ViewBag.Title = "UserDetail";
+}
+
+<div class="col-lg-6" *ngIf="user">
+    <label>User name:</label> {{user.UserName}}<br />
+    <label>Date of birth:</label> {{user.DOB | date}}<br />
+    <label>Created At:</label> {{user.RegDate | date}}<br />
+    <label>Country: </label> {{user.Country}}
+</div>*@
+
+<div class="container">
+    <h1>User Detail</h1>
+    <div class="form" *ngIf="user">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab">Profile</a></li>
+        </ul>
+        <div class="form_row">
+            <label>Name:</label>
+           {{user.UserName}}
+        </div>
+        <div class="form_row">
+            <label>Date of Birth:</label>
+            {{user.DOB | date}}
+        </div>
+        <div class="form_row">
+            <label>Status</label>
+            {{user.Status}}
+        </div>
+        <div class="form_row">
+            <a [routerLink]="['/stores/store-by-user-id', user.ID]">Store List</a>
+        </div>
+    </div>
+</div>
+

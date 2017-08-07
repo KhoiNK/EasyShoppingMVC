@@ -1,0 +1,101 @@
+﻿<h2>Order Detail</h2>
+<div class="container" style="width:100%">
+    <div class="row" style="background-color:#425161; height:40px;color:white">
+        <div class="col-md-4">Order #{{order.ID}}</div>
+        <div class="col-md-4" style="text-align:center">Created Date: {{order.CreatedDate | date}}</div>
+        <div class="col-md-4" style="text-align:right">Total: {{order.Total | currency:'vnd'}}</div>
+    </div>
+    <template [ngIf]="order.Children?.length <= 0">
+        <div class="row" style="margin:0px; border-bottom:1px solid #f1f1f1">
+            <div class="row">
+                <div class="col-md-6">{{order.Store}}</div>
+                <div class="col-md-6">{{order.Status}}</div>
+            </div>
+            
+            <div class="row">
+                <div class="row" style="position:relative">
+                    <div style="border:3px solid black"></div>
+                    <div class="col-md-4"><div class="pull-left progress_dot"></div></div>
+                    <div class="col-md-4" style="text-align:-webkit-center"><div class="text-center progress_dot"></div></div>
+                    <div class="col-md-4"><div class="pull-right progress_dot"></div></div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>
+                                 
+                            </td>
+                            <td>
+                                Name
+                            </td>
+                            <td>
+                                Quantity
+                            </td>
+                            <td>
+                                Price
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let detail of order.details">
+                            <td>
+                                <img src="{{detail.Img}}" class="img-responsive" style="max-width:100px; max-height: 180px"/>
+                            </td>
+                            <td>
+                                {{detail.Product}}
+                            </td>
+                            <td>
+                                {{detail.Quantity}}
+                            </td>
+                            <td>
+                                {{detail.Price | currency:'vnd'}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+    <template [ngIf]="order.Children != []">
+        <div class="row" *ngFor="let children of order.Children" style="margin:0px">
+            <div class="row">
+                <div class="col-md-6">{{children.Store}}</div>
+                <div class="col-md-6">{{children.Status}}</div>
+            </div>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td>
+                                Name
+                            </td>
+                            <td>
+                                Quantity
+                            </td>
+                            <td>
+                                Price
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let detail of children.details">
+                            <td>
+                                <img src="{{detail.Img}}" class="img-responsive" style="max-width:100px; max-height: 180px" />
+                            </td>
+                            <td>
+                                {{detail.Product}}
+                            </td>
+                            <td>
+                                {{detail.Quantity}}
+                            </td>
+                            <td>
+                                {{detail.Price | currency:'vnd'}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+</div>

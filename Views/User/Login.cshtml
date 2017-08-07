@@ -1,0 +1,38 @@
+﻿<div id="form">
+    <!--form-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="login-form">
+                    <!--login form-->
+                    <h2>Login to your account</h2>
+                    <form class="form" #f="ngForm" (ngSubmit)="login()">
+                        <input type="text" placeholder="Name" [(ngModel)]="username" name="username" />
+                        <input type="password" [(ngModel)]="password" name="password" />
+                        <label id="errMess" *ngIf="err != ''" style="color:red">{{err}}</label>
+                        <div>
+                            <button type="submit" class="btn btn-default pull-left">Login</button>
+                            <a [routerLink]="['users/register']" class="btn btn-default" style="padding: 6px 25px; margin-top: 23px; margin-left: 10px;">Register</a>
+                        </div>
+
+                    </form>
+                </div><!--/login form-->
+            </div>
+            @*<div class="col-sm-1">
+                    <h2 class="or">OR</h2>
+                </div>
+                <div class="col-sm-4">
+                    <div class="signup-form">
+                        <!--sign up form-->
+                        <h2>New User Signup!</h2>
+                        <form action="#">
+                            <input type="text" placeholder="Name" />
+                            <input type="email" placeholder="Email Address" />
+                            <input type="password" placeholder="Password" />
+                            <button type="submit" class="btn btn-default">Signup</button>
+                        </form>
+                    </div><!--/sign up form-->
+                </div>*@
+        </div>
+    </div>
+</div><!--/form-->
